@@ -3,10 +3,25 @@ import Post from './Post/component/Post';
 import './App.css';
 
 class App extends Component {
+
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          posts: [],
+      }
+  }
+
   render() {
     return (
       <div>
-          <Post/>
+          {
+            this.state.posts.map((postBody, index) => {
+                return (
+                <Post key={index} postBody={postBody} />
+                )
+            })
+          }
           <div className="panel panel-default post-editor">
             <div className="panel-body">
                 <textarea className="form-control post-editor-input" />
